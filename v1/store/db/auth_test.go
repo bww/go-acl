@@ -1,9 +1,8 @@
-package acl
+package db
 
 import (
 	"fmt"
 	"testing"
-	"time"
 
 	"github.com/bww/go-acl/v1"
 
@@ -13,8 +12,8 @@ import (
 )
 
 func TestAuthorizationCRUD(t *testing.T) {
-	pa := NewAuthorizationPersister(test.DB())
-	now := time.Now().Truncate(time.Millisecond)
+	pa := NewAuthorizationStore(test.DB())
+	now := dbx.Now()
 	var err error
 
 	a1 := &acl.Authorization{

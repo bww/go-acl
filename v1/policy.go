@@ -18,7 +18,7 @@ type Policy interface {
 	Eval(*http.Request) (Effect, error)
 }
 
-type persistentPolicy struct {
+type PersistentPolicy struct {
 	Id      uuid.UUID       `json:"id" db:"id,pk"`
 	Type    string          `json:"type" db:"type"`
 	Data    json.RawMessage `json:"data" db:"data"`
