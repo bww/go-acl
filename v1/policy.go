@@ -15,9 +15,11 @@ var ErrUnsupportedPolicyType = fmt.Errorf("Unsupported policy type")
 // Implemented by ACL policies
 type Policy interface {
 	Id() uuid.UUID
+	WithId(uuid.UUID) Policy
 	Eval(*http.Request) (Effect, error)
 }
 
+// An ACL policy persistent representation
 type PersistentPolicy struct {
 	Id      uuid.UUID       `json:"id" db:"id,pk"`
 	Type    string          `json:"type" db:"type"`
@@ -81,6 +83,17 @@ func DenyResource(a Action, p Path) ResourcePolicy {
 
 func (p ResourcePolicy) Id() uuid.UUID {
 	return p.id
+}
+
+func (p ResourcePolicy) WithId(id uuid.UUID) Policy {
+	return ResourcePolicy{
+		policy: policy{
+			id: id,
+		},
+		Actions: p.Actions,
+		Paths:   p.Paths,
+		Effect:  p.Effect,
+	}
 }
 
 func (p ResourcePolicy) Eval(req *http.Request) (Effect, error) {

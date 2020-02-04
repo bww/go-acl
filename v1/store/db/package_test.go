@@ -10,6 +10,6 @@ import (
 )
 
 func TestMain(m *testing.M) {
-	test.Init("acl_store_db_test", test.WithMigrations(urls.File(env.Etc("db"))))
+	test.Init("acl_v1_store_db_test", test.WithMigrations(urls.File(env.Etc("db"))))
 	os.Exit(m.Run())
 }

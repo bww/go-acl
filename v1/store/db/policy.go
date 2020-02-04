@@ -40,11 +40,7 @@ func (s policyStore) StorePolicy(v acl.Policy) (acl.Policy, error) {
 		return nil, err
 	}
 
-	r, err := acl.UnmarshalPolicy(c.Id, t, d)
-	if err != nil {
-		return nil, err
-	}
-	return r, nil
+	return v.WithId(c.Id), nil
 }
 
 func (s policyStore) CountPolicies() (int, error) {
