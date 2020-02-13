@@ -24,21 +24,21 @@ func (s authorizationStore) With(cxt dbx.Context) authorizationStore {
 }
 
 func (s authorizationStore) StoreAuthorization(v *acl.Authorization) error {
-	return s.Store(authTable, v, nil)
+	return s.Store("acl_authorization", v, nil)
 }
 
 func (s authorizationStore) CycleAuthorizationCredentials(id uuid.UUID, oldKey, oldSecret, newKey, newSecret string) error {
-	_, err := s.Exec(`UPDATE `+authTable+` SET key = $1, secret = $2 WHERE id = $3 AND key = $4 AND secret = $5`, newKey, newSecret, id, oldKey, oldSecret)
+	_, err := s.Exec(`UPDATE acl_authorization SET key = $1, secret = $2 WHERE id = $3 AND key = $4 AND secret = $5`, newKey, newSecret, id, oldKey, oldSecret)
 	return err
 }
 
 func (s authorizationStore) CountAuthorizations() (int, error) {
-	return s.Count(`SELECT COUNT(*) FROM ` + authTable)
+	return s.Count(`SELECT COUNT(*) FROM acl_authorization`)
 }
 
 func (s authorizationStore) FetchAuthorization(id uuid.UUID) (*acl.Authorization, error) {
 	v := &acl.Authorization{}
-	err := s.Fetch(authTable, v, id)
+	err := s.Fetch("acl_authorization", v, id)
 	if err != nil {
 		return nil, err
 	}
@@ -47,7 +47,7 @@ func (s authorizationStore) FetchAuthorization(id uuid.UUID) (*acl.Authorization
 
 func (s authorizationStore) FetchAuthorizationForKeyAndSecret(key, secret string) (*acl.Authorization, error) {
 	v := &acl.Authorization{}
-	err := s.Select(v, `SELECT {*} FROM `+authTable+` WHERE key = $1 AND secret = $2`, key, secret)
+	err := s.Select(v, `SELECT {*} FROM acl_authorization WHERE key = $1 AND secret = $2`, key, secret)
 	if err != nil {
 		return nil, err
 	}
@@ -55,5 +55,5 @@ func (s authorizationStore) FetchAuthorizationForKeyAndSecret(key, secret string
 }
 
 func (s authorizationStore) DeleteAuthorization(v *acl.Authorization) error {
-	return s.Delete(authTable, v)
+	return s.Delete("acl_authorization", v)
 }

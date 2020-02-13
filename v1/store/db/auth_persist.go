@@ -10,8 +10,6 @@ import (
 	"github.com/bww/go-util/uuid"
 )
 
-const authTable = "acl_authorization"
-
 func init() {
 	registry.Set(reflect.ValueOf((*acl.Authorization)(nil)).Type(), &authorizationPersister{})
 }

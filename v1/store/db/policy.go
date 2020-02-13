@@ -35,7 +35,7 @@ func (s policyStore) StorePolicy(v acl.Policy) (acl.Policy, error) {
 		id, t, d, time.Now(),
 	}
 
-	err = s.Store(policyTable, c, nil)
+	err = s.Store("acl_policy", c, nil)
 	if err != nil {
 		return nil, err
 	}
@@ -44,12 +44,12 @@ func (s policyStore) StorePolicy(v acl.Policy) (acl.Policy, error) {
 }
 
 func (s policyStore) CountPolicies() (int, error) {
-	return s.Count(`SELECT COUNT(*) FROM ` + policyTable)
+	return s.Count(`SELECT COUNT(*) FROM acl_policy`)
 }
 
 func (s policyStore) FetchPolicy(id uuid.UUID) (acl.Policy, error) {
 	c := &acl.PersistentPolicy{}
-	err := s.Fetch(policyTable, c, id)
+	err := s.Fetch("acl_policy", c, id)
 	if err != nil {
 		return nil, err
 	}
@@ -57,5 +57,5 @@ func (s policyStore) FetchPolicy(id uuid.UUID) (acl.Policy, error) {
 }
 
 func (s policyStore) DeletePolicy(v acl.Policy) error {
-	return s.DeleteWithID(policyTable, reflect.ValueOf((*acl.PersistentPolicy)(nil)).Type(), v.Id())
+	return s.DeleteWithID("acl_policy", reflect.ValueOf((*acl.PersistentPolicy)(nil)).Type(), v.Id())
 }
