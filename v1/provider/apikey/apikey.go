@@ -7,8 +7,8 @@ import (
 	"github.com/bww/go-acl/v1"
 	"github.com/bww/go-acl/v1/provider"
 
+	"github.com/bww/go-dbx/v1"
 	"github.com/bww/go-util/rand"
-	"github.com/bww/godb"
 )
 
 var errInvalidPolicyEffect = fmt.Errorf("Invalid policy effect")
@@ -43,7 +43,7 @@ func (p APIKeyProvider) Validate(req *http.Request) error {
 	}
 
 	a, err := p.src.AuthorizationForKeyAndSecret(key, secret)
-	if err == godb.ErrNotFound {
+	if err == dbx.ErrNotFound {
 		return provider.ErrUnauthorized
 	} else if err != nil {
 		return err

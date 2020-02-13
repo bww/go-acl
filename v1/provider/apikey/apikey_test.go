@@ -11,7 +11,7 @@ import (
 	"github.com/bww/go-acl/v1"
 	"github.com/bww/go-acl/v1/provider"
 
-	"github.com/bww/godb"
+	"github.com/bww/go-dbx/v1"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -27,7 +27,7 @@ func (s dataSource) AuthorizationForKeyAndSecret(key, secret string) (*acl.Autho
 	if s.auth.Key == key && s.auth.Secret == secret {
 		return s.auth, nil
 	} else {
-		return nil, godb.ErrNotFound
+		return nil, dbx.ErrNotFound
 	}
 }
 
