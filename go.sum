@@ -32,13 +32,17 @@ github.com/bww/go-dbx v0.0.0-20200204182930-da2c48f0a8e7 h1:pWqvErM+soy4EFGXCP5B
 github.com/bww/go-dbx v0.0.0-20200204182930-da2c48f0a8e7/go.mod h1:NosI9bIFzpY8AktUuCgIs1qEH5yFRJ1/SFFx4VSTMUc=
 github.com/bww/go-dbx v0.0.0-20200204193930-1bfe39d604c0 h1:WM3bQ1CquyGaElIM2giA6ff5YJDIP+Wslc9critogLg=
 github.com/bww/go-dbx v0.0.0-20200204193930-1bfe39d604c0/go.mod h1:NosI9bIFzpY8AktUuCgIs1qEH5yFRJ1/SFFx4VSTMUc=
+github.com/bww/go-dbx v0.0.0-20200213221347-3c5b276221eb h1:jbKto5ore+GCtWYPbuJLqTpiEsyz/m5oNwDZTjVLOa0=
+github.com/bww/go-dbx v0.0.0-20200213221347-3c5b276221eb/go.mod h1:D6KICnZFnIiRh7w4rm4d0lXLqAu3C6g8AeOsmFwXYzs=
 github.com/bww/go-lru v0.0.0-20170614154955-3dc72bab928f h1:oUV1ZUmmlCEyMpr8AIdzb9hAt3XeA4Hz0pbhx1wlY8A=
 github.com/bww/go-lru v0.0.0-20170614154955-3dc72bab928f/go.mod h1:Fby496Rx/leNn+pFmBXmREGywDkZhb5sTd8wrbuYnyY=
 github.com/bww/go-upgrade v0.0.0-20170614181807-329e65feb2c0 h1:TqpgEq5qf/6MCPAb51pE22HC6Vc7tDqKY2oPcPRywcU=
 github.com/bww/go-upgrade v0.0.0-20170614181807-329e65feb2c0/go.mod h1:rF+wV8IYImfRFrma7umAkphwnzo/DNZiy9g87a0/heM=
+github.com/bww/go-upgrade v0.0.0-20200213220739-04532d5e2e09/go.mod h1:X4VhWfz1nXWtOTlNLrVV/Xv7bUzoT0XYR3Pg6mOrUM0=
 github.com/bww/go-util v0.0.0-20190625001350-f31bca196fd1/go.mod h1:qJqZ5WZ/HjEWnBbTKrCm1qF+E2i+pbWmbsCwDAh6Jiw=
 github.com/bww/go-util v0.0.0-20200128180646-dbb3df291a5d h1:sctqBh0x/dS9vCj0tOAMLaQgbHWD/c1az6h/V+8OrlY=
 github.com/bww/go-util v0.0.0-20200128180646-dbb3df291a5d/go.mod h1:eetI2LVCZPc50RTF1gSbNonGRWlT7UARNoILqCW2on8=
+github.com/bww/go-util v0.0.0-20200204203829-ff5050ad549d/go.mod h1:eetI2LVCZPc50RTF1gSbNonGRWlT7UARNoILqCW2on8=
 github.com/bww/godb v0.0.0-20200103144822-a8bc1c0d0f9e h1:oM68cBEVyaB6Ewe3CziV7OBy/ZKWQLr9cr3cvNxR6w8=
 github.com/bww/godb v0.0.0-20200103144822-a8bc1c0d0f9e/go.mod h1:lK/J4O5FwuU4tZ5EsHPZTdyjYJLJXjoz8nJGu1+e5RQ=
 github.com/client9/misspell v0.3.4/go.mod h1:qj6jICC3Q7zFZvVWo7KLAzC3yx5G7kyvSDkc90ppPyw=
