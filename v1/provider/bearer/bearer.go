@@ -8,7 +8,7 @@ import (
 	"github.com/bww/go-acl/v1"
 	"github.com/bww/go-acl/v1/provider"
 
-	"github.com/bww/go-util/crypto"
+	"github.com/bww/go-util/v1/crypto"
 )
 
 var errInvalidPolicyEffect = fmt.Errorf("Invalid policy effect")

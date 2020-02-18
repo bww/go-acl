@@ -3,7 +3,7 @@ package acl
 import (
 	"time"
 
-	"github.com/bww/go-util/uuid"
+	"github.com/bww/go-util/v1/uuid"
 )
 
 type Authorization struct {

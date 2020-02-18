@@ -5,7 +5,7 @@ import (
 	"testing"
 
 	"github.com/bww/go-dbx/v1/test"
-	"github.com/bww/go-util/env"
+	"github.com/bww/go-util/v1/env"
 )
 
 func TestMain(m *testing.M) {

@@ -7,7 +7,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/bww/go-util/uuid"
+	"github.com/bww/go-util/v1/uuid"
 )
 
 var ErrUnsupportedPolicyType = fmt.Errorf("Unsupported policy type")

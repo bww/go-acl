@@ -40,6 +40,8 @@ github.com/bww/go-dbx v0.0.0-20200214151345-4e2b2fec6abd h1:lpeRii2oXg3sdEUQMneu
 github.com/bww/go-dbx v0.0.0-20200214151345-4e2b2fec6abd/go.mod h1:jMd9jL3aK3k1g2IVy7+3kHBD4Ypp0xARn93IStDQ70E=
 github.com/bww/go-dbx v1.1.0 h1:6d2FfszaoeIY6prvjSrejWNUhiF0SC93PVg9K3mY4Vk=
 github.com/bww/go-dbx v1.1.0/go.mod h1:jMd9jL3aK3k1g2IVy7+3kHBD4Ypp0xARn93IStDQ70E=
+github.com/bww/go-dbx v1.1.1 h1:50K+O7mwggSQ7N3tFntZMWK/mNl6zbgVEFWjAAQj61U=
+github.com/bww/go-dbx v1.1.1/go.mod h1:rqFE59w/X8tyvfIXRfu0AkcWSRSaIpL2qd+8X8NfDiE=
 github.com/bww/go-lru v0.0.0-20170614154955-3dc72bab928f h1:oUV1ZUmmlCEyMpr8AIdzb9hAt3XeA4Hz0pbhx1wlY8A=
 github.com/bww/go-lru v0.0.0-20170614154955-3dc72bab928f/go.mod h1:Fby496Rx/leNn+pFmBXmREGywDkZhb5sTd8wrbuYnyY=
 github.com/bww/go-upgrade v0.0.0-20170614181807-329e65feb2c0 h1:TqpgEq5qf/6MCPAb51pE22HC6Vc7tDqKY2oPcPRywcU=
@@ -50,15 +52,9 @@ github.com/bww/go-upgrade v0.0.0-20200213225829-c6bd7d3527ec h1:QZWu7xsYv7fr4hgM
 github.com/bww/go-upgrade v0.0.0-20200213225829-c6bd7d3527ec/go.mod h1:X4VhWfz1nXWtOTlNLrVV/Xv7bUzoT0XYR3Pg6mOrUM0=
 github.com/bww/go-upgrade v0.0.0-20200214150952-2af1432873e6 h1:rXPtx5jRWrfek59QQ/txC3ukyYhQuLrpYlDMpm/eyzo=
 github.com/bww/go-upgrade v0.0.0-20200214150952-2af1432873e6/go.mod h1:X4VhWfz1nXWtOTlNLrVV/Xv7bUzoT0XYR3Pg6mOrUM0=
-github.com/bww/go-util v0.0.0-20190625001350-f31bca196fd1/go.mod h1:qJqZ5WZ/HjEWnBbTKrCm1qF+E2i+pbWmbsCwDAh6Jiw=
-github.com/bww/go-util v0.0.0-20200128180646-dbb3df291a5d h1:sctqBh0x/dS9vCj0tOAMLaQgbHWD/c1az6h/V+8OrlY=
-github.com/bww/go-util v0.0.0-20200128180646-dbb3df291a5d/go.mod h1:eetI2LVCZPc50RTF1gSbNonGRWlT7UARNoILqCW2on8=
-github.com/bww/go-util v0.0.0-20200204203829-ff5050ad549d h1:AQDSka6Z4Jxo6O44HfOnN4ON2P/4IBXAgF5Gea9b7PQ=
 github.com/bww/go-util v0.0.0-20200204203829-ff5050ad549d/go.mod h1:eetI2LVCZPc50RTF1gSbNonGRWlT7UARNoILqCW2on8=
-github.com/bww/go-util v0.0.0-20200213233133-54548a45fa83 h1:hMV9uTX1+tEG/BcVx/+IyfMQY0VxVPltW+dBlIFVNRk=
-github.com/bww/go-util v0.0.0-20200213233133-54548a45fa83/go.mod h1:eetI2LVCZPc50RTF1gSbNonGRWlT7UARNoILqCW2on8=
-github.com/bww/godb v0.0.0-20200103144822-a8bc1c0d0f9e h1:oM68cBEVyaB6Ewe3CziV7OBy/ZKWQLr9cr3cvNxR6w8=
-github.com/bww/godb v0.0.0-20200103144822-a8bc1c0d0f9e/go.mod h1:lK/J4O5FwuU4tZ5EsHPZTdyjYJLJXjoz8nJGu1+e5RQ=
+github.com/bww/go-util v1.0.0 h1:/BqCKDms3waQhmEZyf1jXmr8RLoqgA3nQSMjPNAZkaY=
+github.com/bww/go-util v1.0.0/go.mod h1:eetI2LVCZPc50RTF1gSbNonGRWlT7UARNoILqCW2on8=
 github.com/client9/misspell v0.3.4/go.mod h1:qj6jICC3Q7zFZvVWo7KLAzC3yx5G7kyvSDkc90ppPyw=
 github.com/cloudflare/golz4 v0.0.0-20150217214814-ef862a3cdc58/go.mod h1:EOBUe0h4xcZ5GoxqC5SDxFQ8gwyZPKQoEzownBlhI80=
 github.com/cockroachdb/apd v1.1.0/go.mod h1:8Sl8LxpKi29FqWXR16WEFZRNSz3SoPzUzeMeY4+DwBQ=
