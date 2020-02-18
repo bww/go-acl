@@ -38,6 +38,8 @@ github.com/bww/go-dbx v0.0.0-20200213230036-ad90d68a90bb h1:RaK3cHIOlndzKxNEfvE6
 github.com/bww/go-dbx v0.0.0-20200213230036-ad90d68a90bb/go.mod h1:fuEwIkpAw30ekywuzIM1uxxQXU3CX8jZQE8+gCC0yCs=
 github.com/bww/go-dbx v0.0.0-20200214151345-4e2b2fec6abd h1:lpeRii2oXg3sdEUQMneuqwLKJEwEdSZ5S02fmN2pA9g=
 github.com/bww/go-dbx v0.0.0-20200214151345-4e2b2fec6abd/go.mod h1:jMd9jL3aK3k1g2IVy7+3kHBD4Ypp0xARn93IStDQ70E=
+github.com/bww/go-dbx v1.1.0 h1:6d2FfszaoeIY6prvjSrejWNUhiF0SC93PVg9K3mY4Vk=
+github.com/bww/go-dbx v1.1.0/go.mod h1:jMd9jL3aK3k1g2IVy7+3kHBD4Ypp0xARn93IStDQ70E=
 github.com/bww/go-lru v0.0.0-20170614154955-3dc72bab928f h1:oUV1ZUmmlCEyMpr8AIdzb9hAt3XeA4Hz0pbhx1wlY8A=
 github.com/bww/go-lru v0.0.0-20170614154955-3dc72bab928f/go.mod h1:Fby496Rx/leNn+pFmBXmREGywDkZhb5sTd8wrbuYnyY=
 github.com/bww/go-upgrade v0.0.0-20170614181807-329e65feb2c0 h1:TqpgEq5qf/6MCPAb51pE22HC6Vc7tDqKY2oPcPRywcU=
