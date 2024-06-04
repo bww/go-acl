@@ -7,7 +7,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestMarshalDomain(t *testing.T) {
+func TestMarshalRealm(t *testing.T) {
 	tests := []struct {
 		Realm  Realm
 		Expect string
@@ -41,7 +41,7 @@ func TestMarshalDomain(t *testing.T) {
 	}
 }
 
-func TestUnmarshalDomain(t *testing.T) {
+func TestUnmarshalRealm(t *testing.T) {
 	tests := []struct {
 		Input  string
 		Expect Realm
@@ -79,5 +79,61 @@ func TestUnmarshalDomain(t *testing.T) {
 			fmt.Printf("%s -> %v\n", e.Input, d)
 			assert.Equal(t, e.Expect, d)
 		}
+	}
+}
+
+func TestContainsRealm(t *testing.T) {
+	tests := []struct {
+		A, B   Realm
+		Expect bool
+	}{
+		{
+			Realm{}, // empty realm contains everything
+			Realm{{Type: "wk", Name: "hello"}},
+			true,
+		},
+		{
+			Realm{}, // empty realm also contains nothing
+			Realm{},
+			true,
+		},
+		{
+			Realm{{Type: "wk", Name: "000000"}},
+			Realm{{Type: "wk", Name: "000000"}},
+			true,
+		},
+		{
+			Realm{{Type: "wk", Name: "000000"}},
+			Realm{{Type: "wk", Name: "000000"}, {Type: "pj", Name: "111111"}},
+			true,
+		},
+		{
+			Realm{{Type: "wk", Name: "000000"}, {Type: "pj", Name: "111111"}},
+			Realm{{Type: "wk", Name: "000000"}, {Type: "pj", Name: "111111"}, {Type: "rc", Name: "222222"}},
+			true,
+		},
+		{
+			Realm{{Type: "wk", Name: "000000"}},
+			Realm{},
+			false,
+		},
+		{
+			Realm{{Type: "wk", Name: "000000"}, {Type: "pj", Name: "111111"}},
+			Realm{{Type: "wk", Name: "000000"}},
+			false,
+		},
+		{
+			Realm{{Type: "wk", Name: "111111"}},
+			Realm{{Type: "wk", Name: "000000"}},
+			false,
+		},
+		{
+			Realm{{Type: "wk", Name: "000000"}},
+			Realm{{Type: "wk", Name: "111111"}, {Type: "pj", Name: "111111"}},
+			false,
+		},
+	}
+	for _, e := range tests {
+		assert.Equal(t, e.Expect, e.A.Contains(e.B))
 	}
 }

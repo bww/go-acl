@@ -21,6 +21,18 @@ func ParseRealm(s string) (Realm, error) {
 	return d, err
 }
 
+func (r Realm) Contains(v Realm) bool {
+	if len(v) < len(r) {
+		return false // param realm has fewer components; receiver cannot contain it
+	}
+	for i, e := range r {
+		if !e.Equals(v[i]) {
+			return false
+		}
+	}
+	return true
+}
+
 func (d Realm) MarshalText() ([]byte, error) {
 	sb := strings.Builder{}
 	for i, e := range d {
@@ -60,6 +72,10 @@ func (d *Realm) UnmarshalText(text []byte) error {
 type Element struct {
 	Type string
 	Name string
+}
+
+func (c Element) Equals(v Element) bool {
+	return c.Type == v.Type && c.Name == v.Name
 }
 
 func (c Element) MarshalText() ([]byte, error) {
