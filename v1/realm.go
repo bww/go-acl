@@ -33,6 +33,14 @@ func (r Realm) Contains(v Realm) bool {
 	return true
 }
 
+func (r Realm) String() string {
+	t, err := r.MarshalText()
+	if err != nil {
+		panic(err) // this should never happen
+	}
+	return string(t)
+}
+
 func (d Realm) MarshalText() ([]byte, error) {
 	sb := strings.Builder{}
 	for i, e := range d {
