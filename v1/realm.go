@@ -6,22 +6,22 @@ import (
 	"strings"
 )
 
-var errInvalidDomain = fmt.Errorf("Invalid domain")
+var errInvalidRealm = fmt.Errorf("Invalid relam")
 
-// A Domain describes the context in which access is granted. All scopes are
-// considered in the context of a domain. Domains are expressed as a path
-// of typed components.
+// A Realm describes the context in which access is granted. All scopes are
+// considered in the context of a relam. Realms are expressed as a path of
+// typed components.
 //
 //	workspace:1/project:2/resource:3
-type Domain []Component
+type Realm []Element
 
-func ParseDomain(s string) (Domain, error) {
-	var d Domain
+func ParseRealm(s string) (Realm, error) {
+	var d Realm
 	err := d.UnmarshalText([]byte(s))
 	return d, err
 }
 
-func (d Domain) MarshalText() ([]byte, error) {
+func (d Realm) MarshalText() ([]byte, error) {
 	sb := strings.Builder{}
 	for i, e := range d {
 		if i > 0 {
@@ -36,8 +36,8 @@ func (d Domain) MarshalText() ([]byte, error) {
 	return []byte(sb.String()), nil
 }
 
-func (d *Domain) UnmarshalText(text []byte) error {
-	var p []Component
+func (d *Realm) UnmarshalText(text []byte) error {
+	var p []Element
 	s := string(text)
 	for len(s) > 0 {
 		var v string
@@ -46,7 +46,7 @@ func (d *Domain) UnmarshalText(text []byte) error {
 		} else {
 			v, s = s[:x], s[x+1:]
 		}
-		var c Component
+		var c Element
 		err := c.UnmarshalText([]byte(v))
 		if err != nil {
 			return fmt.Errorf("%w: in %s", err, string(text))
@@ -57,12 +57,12 @@ func (d *Domain) UnmarshalText(text []byte) error {
 	return nil
 }
 
-type Component struct {
+type Element struct {
 	Type string
 	Name string
 }
 
-func (c Component) MarshalText() ([]byte, error) {
+func (c Element) MarshalText() ([]byte, error) {
 	sb := strings.Builder{}
 	sb.WriteString(url.PathEscape(c.Type))
 	sb.WriteString(":")
@@ -70,23 +70,23 @@ func (c Component) MarshalText() ([]byte, error) {
 	return []byte(sb.String()), nil
 }
 
-func (c *Component) UnmarshalText(text []byte) error {
+func (c *Element) UnmarshalText(text []byte) error {
 	s := string(text)
 	x := strings.Index(s, ":")
 	if x < 0 {
-		return fmt.Errorf("%w: no component delimiter in: %s", errInvalidDomain, s)
+		return fmt.Errorf("%w: no component delimiter in: %s", errInvalidRealm, s)
 	}
 	p := s[:x]
 	t, err := url.PathUnescape(p)
 	if err != nil {
-		return fmt.Errorf("%w: invalid type in: %s", errInvalidDomain, p)
+		return fmt.Errorf("%w: invalid type in: %s", errInvalidRealm, p)
 	}
 	p = s[x+1:]
 	n, err := url.PathUnescape(p)
 	if err != nil {
-		return fmt.Errorf("%w: invalid type in: %s", errInvalidDomain, p)
+		return fmt.Errorf("%w: invalid type in: %s", errInvalidRealm, p)
 	}
-	*c = Component{
+	*c = Element{
 		Type: t,
 		Name: n,
 	}
