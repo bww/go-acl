@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-var errInvalidRealm = fmt.Errorf("Invalid relam")
+var errInvalidRealm = fmt.Errorf("Invalid realm")
 
 // A Realm describes the context in which access is granted. All scopes are
 // considered in the context of a relam. Realms are expressed as a path of
@@ -19,6 +19,18 @@ func ParseRealm(s string) (Realm, error) {
 	var d Realm
 	err := d.UnmarshalText([]byte(s))
 	return d, err
+}
+
+func (r Realm) Len() int {
+	return len(r)
+}
+
+func (r Realm) Shift() (Element, Realm) {
+	if len(r) > 0 {
+		return r[0], Realm(r[1:])
+	} else {
+		return Element{}, Realm{}
+	}
 }
 
 func (r Realm) Contains(v Realm) bool {
