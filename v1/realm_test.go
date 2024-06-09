@@ -17,6 +17,9 @@ func TestMarshalRealm(t *testing.T) {
 			nil, "", nil,
 		},
 		{
+			Realm{{Type: "a"}}, "a", nil,
+		},
+		{
 			Realm{{Type: "a", Name: "hello"}}, "a:hello", nil,
 		},
 		{
@@ -24,6 +27,12 @@ func TestMarshalRealm(t *testing.T) {
 		},
 		{
 			Realm{{Type: "a", Name: "///"}, {Type: "b", Name: "???"}}, "a:%2F%2F%2F/b:%3F%3F%3F", nil,
+		},
+		{
+			Realm{{Type: "wk"}, {Type: "pj", Name: "11111111111111111111"}}, "wk/pj:11111111111111111111", nil,
+		},
+		{
+			Realm{{Type: "wk", Name: "00000000000000000000"}, {Type: "pj"}}, "wk:00000000000000000000/pj", nil,
 		},
 		{
 			Realm{{Type: "wk", Name: "00000000000000000000"}, {Type: "pj", Name: "11111111111111111111"}}, "wk:00000000000000000000/pj:11111111111111111111", nil,
@@ -51,6 +60,9 @@ func TestUnmarshalRealm(t *testing.T) {
 			"", nil, nil,
 		},
 		{
+			"a", Realm{{Type: "a"}}, nil,
+		},
+		{
 			"a:hello", Realm{{Type: "a", Name: "hello"}}, nil,
 		},
 		{
@@ -60,10 +72,16 @@ func TestUnmarshalRealm(t *testing.T) {
 			"a:%2F%2F%2F/b:%3F%3F%3F", Realm{{Type: "a", Name: "///"}, {Type: "b", Name: "???"}}, nil,
 		},
 		{
+			"wk/pj:11111111111111111111", Realm{{Type: "wk"}, {Type: "pj", Name: "11111111111111111111"}}, nil,
+		},
+		{
+			"wk:00000000000000000000/pj", Realm{{Type: "wk", Name: "00000000000000000000"}, {Type: "pj"}}, nil,
+		},
+		{
 			"wk:00000000000000000000/pj:11111111111111111111", Realm{{Type: "wk", Name: "00000000000000000000"}, {Type: "pj", Name: "11111111111111111111"}}, nil,
 		},
 		{
-			"no/component/delimiter", nil, errInvalidRealm,
+			"%%%invalid", nil, errInvalidRealm,
 		},
 		{
 			"invalid:%%%encoding", nil, errInvalidRealm,

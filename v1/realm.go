@@ -101,27 +101,38 @@ func (c Element) Equals(v Element) bool {
 func (c Element) MarshalText() ([]byte, error) {
 	sb := strings.Builder{}
 	sb.WriteString(url.PathEscape(c.Type))
-	sb.WriteString(":")
-	sb.WriteString(url.PathEscape(c.Name))
+	if c.Name != "" {
+		sb.WriteString(":")
+		sb.WriteString(url.PathEscape(c.Name))
+	}
 	return []byte(sb.String()), nil
 }
 
 func (c *Element) UnmarshalText(text []byte) error {
 	s := string(text)
-	x := strings.Index(s, ":")
-	if x < 0 {
-		return fmt.Errorf("%w: no component delimiter in: %s", errInvalidRealm, s)
+	var err error
+
+	var l, r string
+	if x := strings.Index(s, ":"); x >= 0 {
+		l, r = s[:x], s[x+1:]
+	} else {
+		l = s
 	}
-	p := s[:x]
-	t, err := url.PathUnescape(p)
+
+	var t string
+	t, err = url.PathUnescape(l)
 	if err != nil {
-		return fmt.Errorf("%w: invalid type in: %s", errInvalidRealm, p)
+		return fmt.Errorf("%w: invalid type in: %s", errInvalidRealm, l)
 	}
-	p = s[x+1:]
-	n, err := url.PathUnescape(p)
-	if err != nil {
-		return fmt.Errorf("%w: invalid type in: %s", errInvalidRealm, p)
+
+	var n string
+	if r != "" {
+		n, err = url.PathUnescape(r)
+		if err != nil {
+			return fmt.Errorf("%w: invalid type in: %s", errInvalidRealm, r)
+		}
 	}
+
 	*c = Element{
 		Type: t,
 		Name: n,
