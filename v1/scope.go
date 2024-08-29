@@ -136,9 +136,7 @@ type Scopes []Scope
 func Union(s ...Scopes) Scopes {
 	var m Scopes
 	for _, e := range s {
-		for _, v := range e {
-			m = append(m, v)
-		}
+		m = append(m, e...)
 	}
 	if m == nil {
 		return nil
@@ -171,20 +169,13 @@ func (s Scopes) String() string {
 }
 
 func (s Scopes) Add(a Scopes) Scopes {
-	for _, e := range a {
-		s = append(s, e)
-	}
-	return s
+	return append(s, a...)
 }
 
 func (s Scopes) Merge(a Scopes) Scopes {
 	var m Scopes
-	for _, e := range s {
-		m = append(m, e)
-	}
-	for _, e := range a {
-		m = append(m, e)
-	}
+	m = append(m, s...)
+	m = append(m, a...)
 	return m.Merged()
 }
 
@@ -229,7 +220,7 @@ outer:
 }
 
 func (s Scopes) Value() (driver.Value, error) {
-	var c = make([]string, len(s))
+	c := make([]string, len(s))
 	for i, e := range s {
 		c[i] = e.String()
 	}
